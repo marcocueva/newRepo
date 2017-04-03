@@ -7,8 +7,10 @@
 
 if (file_exists(APP_ROOT . '/config/env/local.php')) {
     require APP_ROOT . '/config/env/local.php';
-} else {
+} else if (APP_ENV) {
     require APP_ROOT . '/config/env/' . APP_ENV . '.php';
+} else {
+    require APP_ROOT . '/config/env/development.php';
 }
 
 /**
@@ -31,7 +33,7 @@ $table_prefix  = 'wp_';
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define('WP_DEBUG', false);
+//define('WP_DEBUG', false);
 
 /* That's all, stop editing! Happy blogging. */
 
